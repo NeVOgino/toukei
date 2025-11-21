@@ -56,8 +56,10 @@ pip install openpyxl pandas
 
 わかりやすく管理するために、以下のようなフォルダ構成をお勧めします：
 
+**注意：** フォルダ名は英数字を使うことをお勧めします（日本語を使うとエラーが発生する場合があります）
+
 ```
-C:\Excel変換プロジェクト\
+C:\ExcelConverter\
 ├── excel_converter.py        （Pythonスクリプトファイル）
 ├── input\                     （変換したいExcelファイルを置くフォルダ）
 │   └── data.xlsx             （変換したいExcelファイル）
@@ -74,11 +76,11 @@ C:\Excel変換プロジェクト\
 
 3. 何もないところで右クリック → 「新規作成」 → 「フォルダー」を選択
 
-4. フォルダー名を「Excel変換プロジェクト」と入力します
+4. フォルダー名を「ExcelConverter」と入力します（英数字を使用）
 
 **2. inputフォルダとoutputフォルダの作成**
 
-1. 作成した「Excel変換プロジェクト」フォルダを開きます
+1. 作成した「ExcelConverter」フォルダを開きます
 
 2. 同様に右クリックして、「input」という名前のフォルダを作成します
 
@@ -86,9 +88,9 @@ C:\Excel変換プロジェクト\
 
 **3. Pythonスクリプトファイルの保存**
 
-1. Pythonスクリプト（excel_converter.py）を「Excel変換プロジェクト」フォルダに保存します
+1. Pythonスクリプト（excel_converter.py）を「ExcelConverter」フォルダに保存します
 
-2. メモ帳やテキストエディタで作成した場合は、「名前を付けて保存」で保存先を「C:\Excel変換プロジェクト」にします
+2. メモ帳やテキストエディタで作成した場合は、「名前を付けて保存」で保存先を「C:\ExcelConverter」にします
 
 **4. Excelファイルの配置**
 
@@ -120,7 +122,7 @@ C:\Excel変換プロジェクト\
 
 ### 方法3：エクスプローラーから直接起動（推奨）
 
-1. エクスプローラーで「C:\Excel変換プロジェクト」フォルダを開きます
+1. エクスプローラーで「C:\ExcelConverter」フォルダを開きます
 
 2. アドレスバー（フォルダのパスが表示されている場所）をクリックします
 
@@ -152,17 +154,17 @@ cd フォルダのパス
 
 ### 具体例
 
-**例1：Excel変換プロジェクトフォルダへ移動**
+**例1：ExcelConverterフォルダへ移動**
 
 ```
-cd C:\Excel変換プロジェクト
+cd C:\ExcelConverter
 ```
 
 **例2：ドライブを変更する場合（DドライブやEドライブなど）**
 
 ```
 D:
-cd D:\Excel変換プロジェクト
+cd D:\ExcelConverter
 ```
 
 **例3：一つ上のフォルダに戻る**
@@ -210,7 +212,7 @@ python excel_converter.py
 **2. プロジェクトフォルダに移動**
 
 ```
-cd C:\Excel変換プロジェクト
+cd C:\ExcelConverter
 ```
 
 **3. ファイルが正しく配置されているか確認**
@@ -332,7 +334,7 @@ pip install pandas
 
 4. **パスの区切り文字**
    - Windowsでは `\` (バックスラッシュ) を使います
-   - 例：`C:\Excel変換プロジェクト\input\data.xlsx`
+   - 例：`C:\ExcelConverter\input\data.xlsx`
 
 ---
 
