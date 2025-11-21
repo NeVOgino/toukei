@@ -31,6 +31,39 @@ import sys
 import openpyxl
 from datetime import datetime
 from pathlib import Path
+import platform
+
+
+def format_japanese_date(dt=None):
+    """
+    日付を日本語形式でフォーマット（ゼロ埋めなし）
+    Format date in Japanese style without zero-padding
+    Cross-platform compatible
+    
+    Args:
+        dt: datetime object (default: current datetime)
+    
+    Returns:
+        str: Formatted date string (e.g., "2025年11月21日")
+    """
+    if dt is None:
+        dt = datetime.now()
+    
+    # Platform-specific format for non-zero-padded dates
+    if platform.system() == 'Windows':
+        # Windows uses %# for non-zero-padded
+        try:
+            return dt.strftime('%Y年%#m月%#d日')
+        except:
+            # Fallback to manual zero removal
+            return dt.strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')
+    else:
+        # Unix-like systems use %-
+        try:
+            return dt.strftime('%Y年%-m月%-d日')
+        except:
+            # Fallback to manual zero removal
+            return dt.strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')
 
 
 def read_excel_data(excel_file):
@@ -358,9 +391,9 @@ def generate_html(data, output_file, page_title, page_subtitle):
         </div>
         
         <div class="info-section">
-            <p>○ {datetime.now().strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')} 次世代自動車振興センター</p>
-            <p>○ {datetime.now().strftime('%Y年度は%Y年%m月%d日までの集計です').replace('年0', '年').replace('月0', '月')}</p>
-            <p>※{datetime.now().strftime('%Y年度')}の補助金交付台数等については、現在審査中のものもあるため、{datetime.now().strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')}現在の数値であり、第6次公募締切（予定）までの最終的な数値ではありません。</p>
+            <p>○ {format_japanese_date()} 次世代自動車振興センター</p>
+            <p>○ {datetime.now().strftime('%Y年度は')} {format_japanese_date()} までの集計です</p>
+            <p>※{datetime.now().strftime('%Y年度')}の補助金交付台数等については、現在審査中のものもあるため、{format_japanese_date()}現在の数値であり、第6次公募締切（予定）までの最終的な数値ではありません。</p>
             <p>※ここで使用されている数字について</p>
             <p>※※FCV（燃料電池自動車）の交付台数は2014年からの集計です</p>
             <p>※※外部給電器と原付EVの交付台数は2020年からの集計です</p>
