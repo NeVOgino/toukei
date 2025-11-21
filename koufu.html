@@ -146,13 +146,35 @@ h1 {
 }
 
 .data-table .total-col {
-  background-color: #fff3cd;
+  background-color: #ffc107;
+  color: #000;
   font-weight: bold;
+  border-left: 2px solid #ff9800;
+  border-right: 2px solid #ff9800;
+}
+
+.data-table thead .total-col {
+  background-color: #ff9800;
+  color: white;
 }
 
 .data-table .total-row {
-  background-color: #d1ecf1;
+  background-color: #17a2b8;
+  color: white;
   font-weight: bold;
+  border-top: 2px solid #138496;
+  border-bottom: 2px solid #138496;
+}
+
+.data-table .total-row th {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.data-table .total-row.total-col,
+.data-table .total-row .total-col {
+  background-color: #fd7e14;
+  color: white;
 }
 
 .notes {
