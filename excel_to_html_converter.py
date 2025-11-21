@@ -54,14 +54,14 @@ def format_japanese_date(dt=None):
         # Windows uses %# for non-zero-padded
         try:
             return dt.strftime('%Y年%#m月%#d日')
-        except:
+        except (ValueError, AttributeError):
             # Fallback to manual zero removal
             return dt.strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')
     else:
         # Unix-like systems use %-
         try:
             return dt.strftime('%Y年%-m月%-d日')
-        except:
+        except (ValueError, AttributeError):
             # Fallback to manual zero removal
             return dt.strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')
 
