@@ -358,9 +358,9 @@ def generate_html(data, output_file, page_title, page_subtitle):
         </div>
         
         <div class="info-section">
-            <p>○ {datetime.now().strftime('%Y年%-m月%-d日')} 次世代自動車振興センター</p>
-            <p>○ {datetime.now().strftime('%Y年度は%Y年%-m月%-d日までの集計です')}</p>
-            <p>※{datetime.now().strftime('%Y年度')}の補助金交付台数等については、現在審査中のものもあるため、{datetime.now().strftime('%Y年%-m月%-d日')}現在の数値であり、第6次公募締切（予定）までの最終的な数値ではありません。</p>
+            <p>○ {datetime.now().strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')} 次世代自動車振興センター</p>
+            <p>○ {datetime.now().strftime('%Y年度は%Y年%m月%d日までの集計です').replace('年0', '年').replace('月0', '月')}</p>
+            <p>※{datetime.now().strftime('%Y年度')}の補助金交付台数等については、現在審査中のものもあるため、{datetime.now().strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')}現在の数値であり、第6次公募締切（予定）までの最終的な数値ではありません。</p>
             <p>※ここで使用されている数字について</p>
             <p>※※FCV（燃料電池自動車）の交付台数は2014年からの集計です</p>
             <p>※※外部給電器と原付EVの交付台数は2020年からの集計です</p>
