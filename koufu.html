@@ -243,11 +243,11 @@ h1 {
   </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="showTab('total')">合計</button>
-    <button class="tab" onclick="showTab('ev')">EV</button>
-    <button class="tab" onclick="showTab('phev')">PHEV</button>
-    <button class="tab" onclick="showTab('fcv')">FCV</button>
-    <button class="tab" onclick="showTab('genev')">原付EV</button>
+    <button class="tab active" onclick="showTab('total', event)">合計</button>
+    <button class="tab" onclick="showTab('ev', event)">EV</button>
+    <button class="tab" onclick="showTab('phev', event)">PHEV</button>
+    <button class="tab" onclick="showTab('fcv', event)">FCV</button>
+    <button class="tab" onclick="showTab('genev', event)">原付EV</button>
   </div>
 
   <!-- 合計 Total Tab -->
@@ -484,7 +484,7 @@ h1 {
 
 <script>
 // Tab switching functionality
-function showTab(tabName) {
+function showTab(tabName, event) {
   // Hide all tab contents
   const contents = document.querySelectorAll('.tab-content');
   contents.forEach(content => {
