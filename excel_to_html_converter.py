@@ -314,6 +314,7 @@ def generate_html(data, output_file, page_title, page_subtitle):
             position: sticky;
             top: 0;
             z-index: 10;
+            text-align: center;
         }}
         
         th:first-child, td:first-child {{
