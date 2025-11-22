@@ -66,6 +66,33 @@ def format_japanese_date(dt=None):
             return dt.strftime('%Y年%m月%d日').replace('年0', '年').replace('月0', '月')
 
 
+def format_number(value):
+    """
+    数値を3桁ごとのカンマ区切りでフォーマット
+    Format number with thousand separators
+    
+    Args:
+        value: The value to format (can be string or number)
+    
+    Returns:
+        str: Formatted string with commas or original value
+    """
+    if value == '－' or value == '' or value is None:
+        return '－'
+    
+    try:
+        # 数値に変換してみる
+        num = float(str(value).replace(',', ''))
+        # 整数かチェック
+        if num.is_integer():
+            return f"{int(num):,}"
+        else:
+            return f"{num:,.1f}"
+    except (ValueError, AttributeError):
+        # 数値でない場合はそのまま返す
+        return str(value)
+
+
 def read_excel_data(excel_file):
     """
     エクセルファイルからデータを読み込む
@@ -104,7 +131,8 @@ def read_excel_data(excel_file):
                 if cell_value is None or cell_value == '':
                     row_data.append('－')
                 else:
-                    row_data.append(str(cell_value))
+                    # 数値をフォーマット (Format numbers with commas)
+                    row_data.append(format_number(cell_value))
             
             # 総計行かチェック (Check if total row)
             if '総計' in str(pref_name) or '合計' in str(pref_name):
@@ -183,11 +211,11 @@ def generate_html(data, output_file, page_title, page_subtitle):
             color: #0066cc;
             margin-bottom: 10px;
             font-size: 28px;
-            text-align: center;
+            text-align: left;
         }}
         
         .subtitle {{
-            text-align: center;
+            text-align: left;
             color: #666;
             margin-bottom: 20px;
             font-size: 16px;
