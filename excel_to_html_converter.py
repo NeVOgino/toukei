@@ -222,7 +222,7 @@ def generate_html(data, output_file, page_title, page_subtitle):
         }}
         
         .cross-nav {{
-            text-align: center;
+            text-align: left;
             padding: 10px;
             background-color: #f0f0f0;
             margin-bottom: 20px;
@@ -288,6 +288,8 @@ def generate_html(data, output_file, page_title, page_subtitle):
         
         .table-wrapper {{
             overflow-x: auto;
+            overflow-y: auto;
+            max-height: 600px;
             margin-top: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
