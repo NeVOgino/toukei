@@ -34,6 +34,38 @@ from pathlib import Path
 import platform
 
 
+# ============================================================================
+# 説明文設定セクション / Information Text Configuration Section
+# ============================================================================
+# ここで表示される説明文をカスタマイズできます
+# You can customize the information text displayed here
+#
+# HTMLタグが使えます:
+# - 太字: <strong>テキスト</strong> または <b>テキスト</b>
+# - 斜体: <em>テキスト</em> または <i>テキスト</i>
+# - 下線: <u>テキスト</u>
+# - 色付け: <span style="color: red;">テキスト</span>
+# - リンク: <a href="URL">テキスト</a>
+#
+# 例:
+# "<strong>重要:</strong> この数字は<em>暫定値</em>です"
+# ============================================================================
+
+INFO_TEXT_LINES = [
+    "○ {date} 次世代自動車振興センター",
+    "○ {year}年度は {date} までの集計です",
+    "※{year}年度の補助金交付台数等については、現在審査中のものもあるため、{date}現在の数値であり、第6次公募締切（予定）までの最終的な数値ではありません。",
+    "※ここで使用されている数字について",
+    "※※FCV（燃料電池自動車）の交付台数は2014年からの集計です",
+    "※※外部給電器と原付EVの交付台数は2020年からの集計です",
+    "※※V2H充放電設備の交付基数は2020年からの集計です"
+]
+
+# ============================================================================
+# 説明文設定セクション終了 / End of Configuration Section
+# ============================================================================
+
+
 def format_japanese_date(dt=None):
     """
     日付を日本語形式でフォーマット（ゼロ埋めなし）
@@ -422,14 +454,18 @@ def generate_html(data, output_file, page_title, page_subtitle):
         </div>
         
         <div class="info-section">
-            <p>○ {format_japanese_date()} 次世代自動車振興センター</p>
-            <p>○ {datetime.now().strftime('%Y年度は')} {format_japanese_date()} までの集計です</p>
-            <p>※{datetime.now().strftime('%Y年度')}の補助金交付台数等については、現在審査中のものもあるため、{format_japanese_date()}現在の数値であり、第6次公募締切（予定）までの最終的な数値ではありません。</p>
-            <p>※ここで使用されている数字について</p>
-            <p>※※FCV（燃料電池自動車）の交付台数は2014年からの集計です</p>
-            <p>※※外部給電器と原付EVの交付台数は2020年からの集計です</p>
-            <p>※※V2H充放電設備の交付基数は2020年からの集計です</p>
-        </div>
+'''
+    
+    # Generate info text from configuration with date/year placeholders
+    current_date = format_japanese_date()
+    current_year = datetime.now().year
+    
+    for line in INFO_TEXT_LINES:
+        # Replace placeholders
+        formatted_line = line.format(date=current_date, year=current_year)
+        html_template += f"            <p>{formatted_line}</p>\n"
+    
+    html_template += '''        </div>
         
         <!-- タブ (Tabs) -->
         <div class="tabs">
